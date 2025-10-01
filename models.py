@@ -26,14 +26,6 @@ class SurveySubmission(BaseModel):
         
 #Good example of inheritance
 class StoredSurveyRecord(SurveySubmission):
-    name: str
-    consent: bool
-    rating: int
-    comments: Optional[str]
-    user_agent: Optional[str]   
-    submission_id: str
-    email_hash: str
-    age_hash: str
     received_at: datetime
     ip: str
 
