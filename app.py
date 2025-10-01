@@ -4,10 +4,14 @@ from flask_cors import CORS
 from pydantic import ValidationError
 from models import SurveySubmission, StoredSurveyRecord
 from storage import append_json_line
+import hashlib
 
 app = Flask(__name__)
 # Allow cross-origin requests so the static HTML can POST from localhost or file://
 CORS(app, resources={r"/v1/*": {"origins": "*"}})
+
+def hash_sha256(value: str) -> str:
+    return hashlib.sha256(value.encode('utf-8')).hexdigest()
 
 @app.route("/ping", methods=["GET"])
 def ping():
